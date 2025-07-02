@@ -38,6 +38,7 @@ Step 9: Check Jenkins status
 systemctl status jenkins
 
 Step 10: Start Jenkins service
+sudo systemctl enable jenkins.service
 sudo systemctl start jenkins
 
 Step 11: Check Jenkins status
