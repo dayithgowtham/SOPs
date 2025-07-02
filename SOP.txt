@@ -31,12 +31,6 @@ Step 7: Import Jenkins repository key
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 
-Add key in jenkins.repo at end.
-
-vi jenkins.repo
-
-gpgkey=https://pkg.jenkins.io/redhat/jenkins.io-2023.key
-
 Step 8: Install Jenkins
 sudo yum install jenkins -y
 
@@ -51,7 +45,6 @@ systemctl status jenkins
 
 Step 12: Enable Jenkins service to start on boot
 sudo systemctl enable jenkins
-sudo systemctl enable jenkins.service
 
 Step 13: Get Jenkins initial admin password
 cat /var/lib/jenkins/secrets/initialAdminPassword
