@@ -1,0 +1,50 @@
+# Installing Jenkins on Amazon Linux
+
+## This SOP provides instructions for installing Jenkins on an Amazon Linux instance.
+
+### Prerequisites
+
+- Amazon Linux instance launched
+- SSH access to the instance with administrative privileges
+
+### Installation Steps
+
+Step1: Ensure that your software packages are up to date on your instance by using the following command to perform a quick software update:
+
+       sudo yum update –y
+
+Step2: Add the Jenkins repo using the following command:
+
+       sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+Step3: Import a key file from Jenkins-CI to enable installation from the package:
+
+       sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+       sudo yum upgrade
+
+Step4: Install Java:
+
+       sudo yum install java-17-amazon-corretto -y
+
+Step5: Install Jenkins:
+
+       sudo yum install jenkins -y
+
+Step6: Enable the Jenkins service to start at boot:
+
+       sudo systemctl enable jenkins
+
+Step7: Start Jenkins as a service:
+
+       sudo systemctl start jenkins
+
+Step8: You can check the status of the Jenkins service using the command:
+
+       sudo systemctl status jenkins
+
+Step9: Connect to http://<your_server_public_DNS>:8080 from your browser. You will be able to access Jenkins through its management interface
+
+Step10: As prompted, enter the password found in /var/lib/jenkins/secrets/initialAdminPassword.
+        Use the following command to display this password:
+
+        cat /var/lib/jenkins/secrets/initialAdminPassword 
